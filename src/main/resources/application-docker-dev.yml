@@ -8,9 +8,9 @@ management:
 spring:
   cloud:
     gateway:
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
+        default-filters:
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
         cors-configurations:
           '[/**]':
             allowedOrigins: "*"
@@ -18,10 +18,10 @@ spring:
             allowedHeaders: "*"
       routes:
         - id: rpgtracker-core-route
-          uri: http://localhost:8081
+          uri: http://rpgtracker-core:8081
           predicates:
             - Path=/core/**
         - id: rpgtracker-coc-route
-          uri: http://localhost:8082
+          uri: http://rpgtracker-coc:8082
           predicates:
             - Path=/coc/**
